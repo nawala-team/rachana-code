@@ -43,7 +43,7 @@ export default function TestRunnerPanel() {
     }, 1500);
   };
 
-  const toggleSuite = (name: string) => setExpanded(p => { const s = new Set(p); s.has(name) ? s.delete(name) : s.add(name); return s; });
+  const toggleSuite = (name: string) => setExpanded(p => { const s = new Set(p); if (s.has(name)) { s.delete(name); } else { s.add(name); } return s; });
 
   const getIcon = (s: string) => {
     if (s === 'pass') return <CheckIcon size={12} />;

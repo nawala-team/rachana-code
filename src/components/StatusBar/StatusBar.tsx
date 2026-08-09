@@ -28,7 +28,7 @@ export default function StatusBar() {
             const br = await window.electronAPI.gitGetBranches();
             setBranches(br.branches);
           }
-        } catch (err) { /* ignore */ }
+        } catch { /* ignore */ }
       }
     };
     fetchGitInfo();

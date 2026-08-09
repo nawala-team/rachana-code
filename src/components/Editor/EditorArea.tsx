@@ -139,7 +139,7 @@ export default function EditorArea() {
     if (activeFileId && !activeTabId?.startsWith('file-')) {
       setActiveTabId(activeFileId);
     }
-  }, [activeFileId]);
+  }, [activeFileId, activeTabId]);
 
   const activeTab = tabs.find(t => t.id === activeTabId);
 

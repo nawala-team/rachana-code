@@ -1,6 +1,6 @@
 const { app, BrowserWindow, Menu, shell, ipcMain, dialog } = require('electron');
 const path = require('path');
-const { execSync, exec } = require('child_process');
+const { execSync } = require('child_process');
 const fs = require('fs');
 
 const isDev = process.env.NODE_ENV === 'development' || !app.isPackaged;
@@ -12,7 +12,7 @@ function runGitCommand(command, cwd = currentWorkingDir) {
   if (!cwd) return null;
   try {
     return execSync(command, { cwd, encoding: 'utf8', timeout: 5000 }).trim();
-  } catch (error) {
+  } catch {
     return null;
   }
 }
@@ -315,7 +315,7 @@ ipcMain.handle('terminal-kill', async (event, id) => {
   return { success: false, error: 'Terminal not found' };
 });
 
-ipcMain.handle('terminal-resize', async (event, id, cols, rows) => {
+ipcMain.handle('terminal-resize', async (_event, _id, _cols, _rows) => {
   // For basic spawn, resize is not directly supported
   // Would need node-pty for proper terminal emulation
   return { success: true };
@@ -325,16 +325,41 @@ ipcMain.handle('terminal-resize', async (event, id, cols, rows) => {
 ipcMain.handle('run-command', async (event, command, cwd) => {
   return new Promise((resolve) => {
     const targetCwd = cwd || currentWorkingDir || process.cwd();
-    const isWin = process.platform === 'win32';
     
-    // On Windows, use cmd.exe for better compatibility
-    const shell = isWin ? 'cmd.exe' : '/bin/bash';
-    const shellArgs = isWin ? ['/c', command] : ['-c', command];
+    // Try to find Git Bash in common locations
+    const userProfile = process.env.USERPROFILE || process.env.HOME || '';
+    const localAppData = process.env.LOCALAPPDATA || '';
+    const gitBashPaths = [
+      path.join(userProfile, 'AppData', 'Local', 'Programs', 'Git', 'bin', 'bash.exe'),
+      path.join(localAppData, 'Programs', 'Git', 'bin', 'bash.exe'),
+      'C:\\Program Files\\Git\\bin\\bash.exe',
+      'C:\\Program Files (x86)\\Git\\bin\\bash.exe',
+      path.join(process.env.PROGRAMFILES || '', 'Git', 'bin', 'bash.exe'),
+      path.join(process.env['PROGRAMFILES(X86)'] || '', 'Git', 'bin', 'bash.exe'),
+    ];
+    
+    let shell = 'cmd.exe';
+    let shellArgs = ['/c', command];
+    
+    // Check if Git Bash exists
+    for (const bashPath of gitBashPaths) {
+      if (bashPath && fs.existsSync(bashPath)) {
+        shell = bashPath;
+        shellArgs = ['-c', command];
+        break;
+      }
+    }
+    
+    // On non-Windows, use bash
+    if (process.platform !== 'win32') {
+      shell = '/bin/bash';
+      shellArgs = ['-c', command];
+    }
     
     const { spawn } = require('child_process');
     const child = spawn(shell, shellArgs, {
       cwd: targetCwd,
-      env: process.env,
+      env: { ...process.env, TERM: 'xterm-256color' },
       windowsHide: true,
     });
     
@@ -357,7 +382,7 @@ ipcMain.handle('run-command', async (event, command, cwd) => {
       if (code === 0) {
         resolve({ success: true, stdout, stderr });
       } else {
-        resolve({ success: false, error: `Process exited with code ${code}`, stderr, stdout });
+        resolve({ success: false, error: `Exit code ${code}`, stderr, stdout });
       }
     });
     

@@ -1,4 +1,4 @@
-import { useState, useCallback, useEffect } from 'react';
+import { useState, useCallback, useEffect, useRef } from 'react';
 import TitleBar from '../TitleBar/TitleBar';
 import ActivityBar from '../Sidebar/ActivityBar';
 import Sidebar from '../Sidebar/Sidebar';
@@ -28,32 +28,41 @@ export default function AppLayout() {
   const [panelHeight, setPanelHeight] = useState(200);
   const [panelVisible, setPanelVisible] = useState(true);
 
+  const handleNewFile = useCallback(() => {
+    const id = Date.now();
+    openFile(`untitled-${id}`, `Untitled-${id}`, '');
+  }, [openFile]);
+
+  const handleOpenFolder = useCallback(async () => {
+    if (window.electronAPI) {
+      await window.electronAPI.openFolder();
+    }
+  }, []);
+
   // Listen for menu events from Electron
+  const saveActiveFileRef = useRef(saveActiveFile);
+  const handleNewFileRef = useRef(handleNewFile);
+  const handleOpenFolderRef = useRef(handleOpenFolder);
+  
+  useEffect(() => {
+    saveActiveFileRef.current = saveActiveFile;
+    handleNewFileRef.current = handleNewFile;
+    handleOpenFolderRef.current = handleOpenFolder;
+  });
+
   useEffect(() => {
     if (window.electronAPI) {
       window.electronAPI.onMenuSave(() => {
-        saveActiveFile();
+        saveActiveFileRef.current();
       });
       window.electronAPI.onMenuNewFile(() => {
-        handleNewFile();
+        handleNewFileRef.current();
       });
       window.electronAPI.onMenuOpen(() => {
-        handleOpenFolder();
+        handleOpenFolderRef.current();
       });
     }
-  }, [saveActiveFile]);
-
-  const handleNewFile = () => {
-    const id = Date.now();
-    openFile(`untitled-${id}`, `Untitled-${id}`, '');
-  };
-
-  const handleOpenFolder = async () => {
-    if (window.electronAPI) {
-      await window.electronAPI.openFolder();
-      // Refresh will happen through FileExplorer's useEffect
-    }
-  };
+  }, []);
 
   const handleActivityClick = (view: SidebarView) => {
     if (sidebarView === view && sidebarVisible) {

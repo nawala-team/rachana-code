@@ -32,7 +32,7 @@ export default function DebugPanel() {
   const toggleBp = (id: string) => setBreakpoints(bps => bps.map(b => b.id === id ? {...b, enabled: !b.enabled} : b));
   const removeBp = (id: string) => setBreakpoints(bps => bps.filter(b => b.id !== id));
   const addWatch = () => { if (newWatch.trim()) { setWatchExpressions([...watchExpressions, newWatch]); setNewWatch(''); } };
-  const toggleExp = (n: string) => setExpanded(p => { const s = new Set(p); s.has(n) ? s.delete(n) : s.add(n); return s; });
+  const toggleExp = (n: string) => setExpanded(p => { const s = new Set(p); if (s.has(n)) { s.delete(n); } else { s.add(n); } return s; });
   
   const startDebug = () => { setIsDebugging(true); setIsPaused(true); setConsoleOutput(p => [...p, '> Started']); };
   const stopDebug = () => { setIsDebugging(false); setIsPaused(false); setConsoleOutput(p => [...p, '> Stopped']); };

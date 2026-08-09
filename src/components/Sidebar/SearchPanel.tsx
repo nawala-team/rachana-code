@@ -48,7 +48,7 @@ export default function SearchPanel() {
   }, [query, caseSensitive, wholeWord, useRegex, excludePattern]);
 
   const grouped = useMemo(() => { const g: Record<string, SearchResult[]> = {}; results.forEach(r => { (g[r.file] ??= []).push(r); }); return g; }, [results]);
-  const toggle = (f: string) => setExpandedFiles(p => { const n = new Set(p); n.has(f) ? n.delete(f) : n.add(f); return n; });
+  const toggle = (f: string) => setExpandedFiles(p => { const n = new Set(p); if (n.has(f)) { n.delete(f); } else { n.add(f); } return n; });
 
   return (
     <div className="search-panel">

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useEditor, type FileNode } from '../../context/EditorContext';
 import { 
   FolderIcon, 
@@ -98,18 +98,18 @@ export default function FileExplorer() {
   const [loading, setLoading] = useState(false);
 
   // Load working directory on mount
-  useEffect(() => {
-    loadWorkingDir();
-  }, []);
-
-  const loadWorkingDir = async () => {
+  const loadWorkingDir = useCallback(async () => {
     if (window.electronAPI && !workingDir) {
       const dir = await window.electronAPI.getWorkingDir();
       if (dir) {
         await openFolder();
       }
     }
-  };
+  }, [workingDir, openFolder]);
+
+  useEffect(() => {
+    loadWorkingDir();
+  }, [loadWorkingDir]);
 
   const loadDirectory = async (dirPath: string): Promise<FileNode[]> => {
     if (!window.electronAPI) return [];

@@ -1,0 +1,117 @@
+.profiler-panel {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: var(--space-2);
+  gap: var(--space-3);
+}
+
+.profiler-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.profiler-header h3 { margin: 0; font-size: var(--text-sm); }
+
+.record-btn {
+  padding: 4px 10px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-sm);
+  color: var(--text-primary);
+  font-size: var(--text-xs);
+  cursor: pointer;
+}
+
+.record-btn.recording {
+  background: #f93e3e;
+  color: white;
+  border-color: #f93e3e;
+  animation: pulse 1s infinite;
+}
+
+@keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.7; } }
+
+.metrics-section { display: flex; flex-direction: column; gap: var(--space-2); }
+
+.metric-item { display: flex; flex-direction: column; gap: 4px; }
+
+.metric-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: var(--text-xs);
+}
+
+.metric-name { color: var(--text-muted); }
+.metric-value { font-weight: 600; font-family: var(--font-mono); }
+
+.metric-bar {
+  height: 6px;
+  background: var(--bg-primary);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.metric-fill {
+  height: 100%;
+  border-radius: 3px;
+  transition: width 0.3s ease;
+}
+
+.metric-sparkline {
+  height: 20px;
+}
+
+.metric-sparkline svg { width: 100%; height: 100%; }
+
+.section-title {
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+  margin-bottom: var(--space-1);
+}
+
+.hotspots-section { border-top: 1px solid var(--border-default); padding-top: var(--space-2); }
+
+.hotspot-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 4px 0;
+  font-size: var(--text-xs);
+}
+
+.hotspot-time {
+  color: var(--status-warning);
+  font-family: var(--font-mono);
+}
+
+.timeline-section { border-top: 1px solid var(--border-default); padding-top: var(--space-2); }
+
+.timeline-bar {
+  display: flex;
+  height: 20px;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+}
+
+.timeline-segment { height: 100%; }
+.timeline-segment.js { background: #f7df1e; }
+.timeline-segment.render { background: #9b59b6; }
+.timeline-segment.paint { background: #2ecc71; }
+.timeline-segment.idle { background: #95a5a6; }
+
+.timeline-legend {
+  display: flex;
+  gap: var(--space-2);
+  margin-top: var(--space-1);
+  font-size: 10px;
+  color: var(--text-muted);
+}
+
+.timeline-legend i {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 2px;
+  margin-right: 4px;
+}

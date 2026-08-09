@@ -1,0 +1,51 @@
+{
+  "name": "rachana-code",
+  "private": true,
+  "version": "1.0.0",
+  "description": "A modern code editor by NAWALA Team",
+  "author": {
+    "name": "NAWALA Team",
+    "email": "team@nawala.dev"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/nicoryne/rachana-code",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nicoryne/rachana-code.git"
+  },
+  "main": "electron/main.cjs",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "lint": "oxlint",
+    "preview": "vite preview",
+    "electron:dev": "concurrently \"vite\" \"wait-on http://localhost:5173 && electron .\"",
+    "electron:build": "npm run build && electron-builder --config electron-builder.config.cjs",
+    "electron:build:win": "npm run build && electron-builder --config electron-builder.config.cjs --win",
+    "electron:build:mac": "npm run build && electron-builder --config electron-builder.config.cjs --mac",
+    "electron:build:linux": "npm run build && electron-builder --config electron-builder.config.cjs --linux",
+    "electron:build:all": "npm run build && electron-builder --config electron-builder.config.cjs --win --linux"
+  },
+  "dependencies": {
+    "@monaco-editor/react": "^4.7.0",
+    "monaco-editor": "^0.56.0",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8"
+  },
+  "devDependencies": {
+    "@types/node": "^24.13.3",
+    "@types/react": "^19.2.17",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^6.0.4",
+    "concurrently": "^10.0.4",
+    "electron": "^43.3.0",
+    "electron-builder": "^26.15.3",
+    "oxlint": "^1.75.0",
+    "png-to-ico": "^3.0.2",
+    "sharp": "^0.35.3",
+    "typescript": "~6.0.2",
+    "vite": "^8.2.0",
+    "wait-on": "^9.1.0"
+  }
+}

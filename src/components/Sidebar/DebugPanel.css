@@ -1,0 +1,57 @@
+.debug-panel {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow-y: auto;
+}
+
+.debug-toolbar {
+  display: flex;
+  gap: 4px;
+  padding: 8px;
+  border-bottom: 1px solid var(--border-default);
+}
+
+.dbg-btn {
+  padding: 4px 8px;
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-default);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.dbg-btn:hover:not(:disabled) { background: var(--bg-hover); }
+.dbg-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+.dbg-btn.start { background: #2ea043; color: white; }
+.dbg-btn.stop { background: #da3633; color: white; }
+
+.dbg-section { border-bottom: 1px solid var(--border-default); }
+.dbg-section summary { padding: 8px; cursor: pointer; font-weight: 500; background: var(--bg-secondary); }
+.dbg-section summary:hover { background: var(--bg-hover); }
+.section-body { padding: 8px; font-size: 12px; }
+
+.var-row { display: flex; gap: 4px; padding: 2px 0; cursor: pointer; }
+.var-row:hover { background: var(--bg-hover); }
+.var-name { color: #9cdcfe; }
+.var-val { color: #ce9178; }
+.var-val.number { color: #b5cea8; }
+.var-val.string { color: #ce9178; }
+
+.watch-item { display: flex; gap: 8px; padding: 2px 0; align-items: center; }
+.watch-item button { margin-left: auto; background: none; border: none; cursor: pointer; opacity: 0.6; }
+.watch-item button:hover { opacity: 1; }
+
+.section-body input { width: 100%; padding: 4px; margin-top: 4px; background: var(--bg-tertiary); border: 1px solid var(--border-default); border-radius: 3px; color: inherit; }
+
+.stack-frame { padding: 2px 0; display: flex; justify-content: space-between; }
+.stack-frame:hover { background: var(--bg-hover); }
+.stack-frame .loc { color: var(--text-muted); font-size: 11px; }
+
+.bp-item { display: flex; align-items: center; gap: 6px; padding: 2px 0; }
+.bp-item input { margin: 0; }
+.bp-item .cond { color: #dcdcaa; font-size: 11px; }
+.bp-item button { margin-left: auto; background: none; border: none; cursor: pointer; opacity: 0.6; }
+
+.console { font-family: var(--font-mono); max-height: 150px; overflow-y: auto; }
+.console div { padding: 1px 0; color: #6a9955; }

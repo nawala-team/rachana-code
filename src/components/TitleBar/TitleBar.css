@@ -1,0 +1,180 @@
+.title-bar {
+  display: flex;
+  align-items: center;
+  height: var(--titlebar-height);
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-default);
+  user-select: none;
+  -webkit-app-region: drag;
+}
+
+/* macOS Traffic Lights */
+.macos-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 14px;
+  height: 100%;
+  -webkit-app-region: no-drag;
+}
+
+.traffic-light {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-fast);
+  position: relative;
+}
+
+.traffic-light.close {
+  background: #ff5f57;
+  box-shadow: 0 0 0 0.5px rgba(0, 0, 0, 0.1) inset;
+}
+
+.traffic-light.minimize {
+  background: #febc2e;
+  box-shadow: 0 0 0 0.5px rgba(0, 0, 0, 0.1) inset;
+}
+
+.traffic-light.maximize {
+  background: #28c840;
+  box-shadow: 0 0 0 0.5px rgba(0, 0, 0, 0.1) inset;
+}
+
+.traffic-light:hover {
+  filter: brightness(0.92);
+}
+
+.traffic-light:active {
+  filter: brightness(0.85);
+}
+
+.traffic-icon {
+  font-size: 8px;
+  font-weight: bold;
+  color: rgba(0, 0, 0, 0.5);
+  line-height: 1;
+}
+
+.title-bar-spacer {
+  width: 70px;
+}
+
+.menu-bar {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  -webkit-app-region: no-drag;
+}
+
+.menu-item-wrapper {
+  position: relative;
+  height: 100%;
+}
+
+.menu-button {
+  height: 100%;
+  padding: 0 10px;
+  background: transparent;
+  border: none;
+  color: var(--text-primary);
+  font-size: var(--text-sm);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  border-radius: var(--radius-sm);
+  margin: 0 1px;
+}
+
+.menu-button:hover,
+.menu-button.active {
+  background: var(--bg-hover);
+}
+
+.menu-dropdown {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  min-width: 240px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  z-index: 1000;
+  padding: var(--space-1);
+  animation: slideDown var(--transition-fast) ease-out;
+}
+
+.menu-dropdown-item {
+  display: flex;
+  align-items: center;
+  padding: 8px 12px;
+  cursor: pointer;
+  position: relative;
+  border-radius: var(--radius-sm);
+  font-size: var(--text-sm);
+  transition: all var(--transition-fast);
+}
+
+.menu-dropdown-item:hover {
+  background: var(--accent-primary);
+  color: white;
+}
+
+.menu-dropdown-item:hover .menu-item-shortcut {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.menu-item-label {
+  flex: 1;
+}
+
+.menu-item-shortcut {
+  color: var(--text-muted);
+  font-size: var(--text-xs);
+  margin-left: 24px;
+  font-family: var(--font-mono);
+}
+
+.menu-divider {
+  height: 1px;
+  background: var(--border-default);
+  margin: var(--space-1) var(--space-2);
+}
+
+.has-submenu .submenu-arrow {
+  margin-left: 8px;
+  font-size: 8px;
+  opacity: 0.6;
+}
+
+.submenu {
+  display: none;
+  position: absolute;
+  left: calc(100% + 4px);
+  top: 0;
+  min-width: 200px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  padding: var(--space-1);
+  animation: scaleIn var(--transition-fast) ease-out;
+}
+
+.has-submenu:hover .submenu {
+  display: block;
+}
+
+.title-bar-title {
+  flex: 1;
+  text-align: center;
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  font-weight: 500;
+  -webkit-app-region: drag;
+}

@@ -1,0 +1,117 @@
+.command-palette-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  display: flex;
+  justify-content: center;
+  padding-top: 15vh;
+  z-index: 1000;
+  animation: fadeIn var(--transition-fast) ease-out;
+}
+
+.command-palette {
+  width: 560px;
+  max-height: 420px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-xl);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  animation: scaleIn var(--transition-normal) ease-out;
+}
+
+.command-input-wrapper {
+  padding: var(--space-3);
+  border-bottom: 1px solid var(--border-default);
+}
+
+.command-input {
+  width: 100%;
+  padding: var(--space-3) var(--space-4);
+  background: var(--bg-primary);
+  border: 1px solid transparent;
+  border-radius: var(--radius-md);
+  color: var(--text-primary);
+  font-size: var(--text-lg);
+  font-family: var(--font-sans);
+  transition: all var(--transition-fast);
+}
+
+.command-input:focus {
+  outline: none;
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 0 3px rgba(168, 85, 247, 0.15);
+}
+
+.command-input::placeholder {
+  color: var(--text-muted);
+}
+
+.command-list {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--space-2);
+}
+
+.command-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-2) var(--space-3);
+  cursor: pointer;
+  border-radius: var(--radius-md);
+  transition: all var(--transition-fast);
+  margin: 2px 0;
+}
+
+.command-item:hover {
+  background: var(--bg-hover);
+}
+
+.command-item.selected {
+  background: var(--accent-primary);
+  color: white;
+}
+
+.command-item.selected .command-icon,
+.command-item.selected .command-label,
+.command-item.selected .command-shortcut {
+  color: white;
+}
+
+.command-item.selected .command-shortcut {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.command-item-left {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.command-icon {
+  font-size: 16px;
+  color: var(--text-muted);
+  transition: color var(--transition-fast);
+}
+
+.command-label {
+  font-size: var(--text-sm);
+  color: var(--text-primary);
+  font-weight: 450;
+  transition: color var(--transition-fast);
+}
+
+.command-shortcut {
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  background: var(--bg-secondary);
+  padding: 4px var(--space-2);
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-fast);
+}

@@ -1,0 +1,98 @@
+.terminal {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: var(--bg-tertiary);
+  font-family: var(--font-mono);
+  font-size: 13px;
+  border-radius: var(--radius-sm);
+}
+
+.terminal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-2) var(--space-3);
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-default);
+}
+
+.terminal-title { 
+  font-weight: 500; 
+  font-size: var(--text-sm);
+}
+
+.terminal-cwd { 
+  color: var(--text-muted); 
+  font-size: var(--text-xs); 
+}
+
+.terminal-output {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--space-3);
+}
+
+.terminal-entry { 
+  margin-bottom: var(--space-3); 
+}
+
+.terminal-prompt {
+  display: flex;
+  gap: var(--space-2);
+  color: var(--text-primary);
+}
+
+.prompt-path { 
+  color: var(--nawala-cyan-400); 
+  font-weight: 500;
+}
+
+.prompt-symbol {
+  color: var(--accent-primary);
+}
+
+.prompt-command { 
+  color: var(--text-primary); 
+}
+
+.terminal-result {
+  margin: var(--space-1) 0 0 0;
+  padding: 0;
+  white-space: pre-wrap;
+  word-break: break-all;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.terminal-result.error { 
+  color: var(--status-error); 
+}
+
+.terminal-result.success { 
+  color: var(--status-success); 
+}
+
+.terminal-input-line {
+  display: flex;
+  gap: var(--space-2);
+  align-items: center;
+  padding: var(--space-2) var(--space-3);
+  background: var(--bg-primary);
+  border-top: 1px solid var(--border-default);
+}
+
+.terminal-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--text-primary);
+  font-family: inherit;
+  font-size: inherit;
+  caret-color: var(--accent-primary);
+}
+
+.terminal-input::placeholder {
+  color: var(--text-muted);
+}

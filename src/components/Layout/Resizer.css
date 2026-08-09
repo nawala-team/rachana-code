@@ -1,0 +1,44 @@
+.resizer {
+  position: absolute;
+  z-index: 10;
+}
+
+.resizer-horizontal {
+  width: 4px;
+  height: 100%;
+  cursor: col-resize;
+  top: 0;
+}
+
+.resizer-horizontal:hover,
+.resizer-horizontal.resizing {
+  background: var(--accent-color);
+}
+
+.resizer-left {
+  left: 0;
+}
+
+.resizer-right {
+  right: 0;
+}
+
+.resizer-vertical {
+  height: 4px;
+  width: 100%;
+  cursor: row-resize;
+  left: 0;
+}
+
+.resizer-vertical:hover,
+.resizer-vertical.resizing {
+  background: var(--accent-color);
+}
+
+.resizer-top {
+  top: 0;
+}
+
+.resizer-bottom {
+  bottom: 0;
+}

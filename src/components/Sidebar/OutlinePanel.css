@@ -1,0 +1,66 @@
+.outline-panel {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: var(--space-2);
+  gap: var(--space-2);
+}
+
+.outline-header {
+  display: flex;
+  gap: var(--space-1);
+}
+
+.outline-filter {
+  flex: 1;
+  padding: 6px 10px;
+  background: var(--bg-primary);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-sm);
+  color: var(--text-primary);
+  font-size: var(--text-xs);
+}
+
+.outline-sort {
+  padding: 4px 8px;
+  background: var(--bg-primary);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-sm);
+  color: var(--text-primary);
+  font-size: var(--text-xs);
+}
+
+.outline-tree { flex: 1; overflow-y: auto; }
+
+.outline-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  padding: 4px 6px;
+  cursor: pointer;
+  border-radius: var(--radius-sm);
+  font-size: var(--text-xs);
+}
+
+.outline-row:hover { background: var(--bg-hover); }
+.outline-row.child { padding-left: 24px; }
+
+.expand-icon { width: 12px; color: var(--text-muted); font-size: 10px; }
+
+.kind-icon {
+  width: 16px;
+  text-align: center;
+  font-size: 11px;
+}
+
+.kind-icon.class { color: #fca130; }
+.kind-icon.interface { color: #61affe; }
+.kind-icon.function { color: #49cc90; }
+.kind-icon.method { color: #9b59b6; }
+.kind-icon.variable { color: #50e3c2; }
+.kind-icon.property { color: var(--text-muted); }
+
+.item-name { flex: 1; color: var(--text-primary); }
+.item-line { color: var(--text-muted); font-size: 10px; font-family: var(--font-mono); }
+
+.outline-children { border-left: 1px solid var(--border-default); margin-left: 8px; }

@@ -1,0 +1,168 @@
+.file-explorer {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.file-explorer-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-2) var(--space-3);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.folder-name {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--text-primary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.refresh-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 12px;
+  padding: 4px;
+  border-radius: var(--radius-sm);
+  opacity: 0.6;
+  transition: all var(--transition-fast);
+}
+
+.refresh-btn:hover {
+  opacity: 1;
+  background: var(--bg-hover);
+}
+
+.file-explorer-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: var(--space-4);
+  text-align: center;
+}
+
+.file-explorer-empty p {
+  color: var(--text-muted);
+  margin-bottom: var(--space-3);
+  font-size: var(--text-sm);
+}
+
+.open-folder-btn {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-4);
+  background: var(--accent-primary);
+  color: white;
+  border: none;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  font-size: var(--text-sm);
+  font-weight: 500;
+  transition: all var(--transition-fast);
+}
+
+.open-folder-btn:hover {
+  background: var(--accent-hover);
+  transform: translateY(-1px);
+}
+
+.loading, .empty-folder {
+  padding: var(--space-4);
+  text-align: center;
+  color: var(--text-muted);
+  font-size: var(--text-sm);
+}
+
+.file-tree {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--space-1) 0;
+}
+
+.file-tree-item-wrapper {
+  width: 100%;
+}
+
+.file-tree-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  width: 100%;
+  padding: 6px var(--space-2);
+  margin: 1px 0;
+  background: transparent;
+  border: none;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  color: var(--text-primary);
+  font-size: var(--text-sm);
+  text-align: left;
+  transition: all var(--transition-fast);
+}
+
+.file-tree-item:hover {
+  background: var(--bg-hover);
+}
+
+.file-tree-item:active {
+  background: var(--bg-active);
+  transform: scale(0.99);
+}
+
+.file-tree-item:focus-visible {
+  outline: none;
+  background: var(--bg-active);
+  box-shadow: inset 0 0 0 1px var(--accent-primary);
+}
+
+.file-tree-item.selected {
+  background: var(--bg-elevated);
+}
+
+.chevron {
+  font-size: 9px;
+  color: var(--text-muted);
+  transition: transform var(--transition-fast);
+  width: 14px;
+  flex-shrink: 0;
+  opacity: 0.6;
+}
+
+.chevron.expanded {
+  transform: rotate(90deg);
+}
+
+.file-icon {
+  font-size: 14px;
+  flex-shrink: 0;
+  width: 18px;
+  text-align: center;
+}
+
+.file-name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-weight: 400;
+}
+
+.file-tree-children {
+  width: 100%;
+}
+
+/* Folder styling */
+.file-tree-item[data-type="folder"] .file-name {
+  font-weight: 500;
+}
+
+/* Hover effect on folder icon */
+.file-tree-item:hover .chevron {
+  opacity: 1;
+}

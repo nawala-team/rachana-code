@@ -1,0 +1,226 @@
+.status-bar {
+  grid-area: status;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--statusbar-height);
+  padding: 0 var(--space-2);
+  background: linear-gradient(90deg, var(--nawala-purple-600), var(--nawala-purple-500));
+  color: white;
+  font-size: var(--text-xs);
+  user-select: none;
+}
+
+.status-left,
+.status-right {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.status-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  height: 22px;
+  border: none;
+  background: transparent;
+  border-radius: var(--radius-md);
+  color: rgba(255, 255, 255, 0.9);
+  font-size: var(--text-xs);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  white-space: nowrap;
+}
+
+.status-item:hover {
+  background: rgba(255, 255, 255, 0.15);
+  color: white;
+}
+
+.status-item:active {
+  background: rgba(255, 255, 255, 0.25);
+  transform: scale(0.98);
+}
+
+/* New File Button */
+.status-btn.new-btn {
+  background: rgba(255, 255, 255, 0.15);
+  font-weight: 500;
+}
+
+.status-btn.new-btn:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.status-btn.new-btn .btn-icon {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* Git Branch Button */
+.status-btn.git-btn {
+  gap: 6px;
+}
+
+.status-btn.git-btn .btn-icon {
+  font-size: 13px;
+}
+
+.status-btn.git-btn:not(:has(.dropdown-arrow)) {
+  opacity: 0.6;
+  cursor: default;
+}
+
+.status-btn.git-btn:not(:has(.dropdown-arrow)):hover {
+  background: transparent;
+}
+
+/* Language Button */
+.status-btn.lang-btn {
+  gap: 6px;
+}
+
+.status-btn.lang-btn .lang-icon {
+  font-size: 12px;
+}
+
+/* Dropdown Arrow */
+.dropdown-arrow {
+  font-size: 8px;
+  opacity: 0.7;
+  margin-left: 2px;
+}
+
+/* Status Indicators */
+.status-indicator {
+  gap: 4px;
+  padding: 4px 8px;
+}
+
+.indicator-icon {
+  font-size: 10px;
+}
+
+.indicator-icon.error {
+  color: #ff8a8a;
+}
+
+.indicator-icon.warning {
+  color: #ffd666;
+}
+
+/* Dropdown Container */
+.status-dropdown {
+  position: relative;
+}
+
+/* Dropdown Menu */
+.status-menu {
+  position: absolute;
+  bottom: calc(100% + 6px);
+  left: 0;
+  min-width: 180px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  padding: var(--space-1);
+  z-index: 1000;
+  animation: slideUp var(--transition-fast) ease-out;
+}
+
+.status-menu.lang-menu {
+  min-width: 220px;
+  right: 0;
+  left: auto;
+}
+
+.menu-header {
+  padding: var(--space-2) var(--space-3);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.menu-list {
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  width: 100%;
+  padding: 8px var(--space-3);
+  background: transparent;
+  border: none;
+  border-radius: var(--radius-sm);
+  color: var(--text-primary);
+  font-size: var(--text-sm);
+  text-align: left;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.menu-item:hover {
+  background: var(--accent-primary);
+  color: white;
+}
+
+.menu-item.active {
+  background: rgba(168, 85, 247, 0.15);
+  color: var(--accent-primary);
+}
+
+.menu-item.active:hover {
+  background: var(--accent-primary);
+  color: white;
+}
+
+.menu-item .check {
+  margin-left: auto;
+  font-size: 12px;
+}
+
+.menu-item .lang-icon {
+  font-size: 9px;
+  font-weight: 700;
+  min-width: 28px;
+  padding: 2px 4px;
+  background: var(--bg-tertiary);
+  border-radius: var(--radius-sm);
+  text-align: center;
+  font-family: var(--font-mono);
+}
+
+.status-btn.lang-btn .lang-icon {
+  font-size: 9px;
+  font-weight: 700;
+  padding: 2px 6px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-mono);
+}
+
+.menu-item.disabled {
+  opacity: 0.5;
+  cursor: default;
+  pointer-events: none;
+}
+
+/* Animation */
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

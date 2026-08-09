@@ -1,0 +1,102 @@
+.git-graph-panel {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: var(--space-2);
+  gap: var(--space-2);
+}
+
+.graph-header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.graph-header h3 { margin: 0; font-size: var(--text-sm); }
+
+.filter-input {
+  padding: 6px 10px;
+  background: var(--bg-primary);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-sm);
+  color: var(--text-primary);
+  font-size: var(--text-xs);
+}
+
+.graph-container { flex: 1; overflow-y: auto; }
+
+.commit-row {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  border-radius: var(--radius-sm);
+  transition: background 0.1s;
+}
+
+.commit-row:hover { background: var(--bg-hover); }
+.commit-row.selected { background: var(--bg-active); }
+
+.graph-line { width: 40px; flex-shrink: 0; }
+
+.commit-info { flex: 1; padding: 6px 0; min-width: 0; }
+
+.commit-message {
+  font-size: var(--text-xs);
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commit-meta {
+  display: flex;
+  gap: var(--space-2);
+  margin-top: 2px;
+  font-size: 10px;
+  color: var(--text-muted);
+}
+
+.commit-hash { font-family: var(--font-mono); color: var(--accent-primary); }
+
+.commit-branch {
+  padding: 1px 6px;
+  border-radius: 10px;
+  color: white;
+  font-size: 9px;
+}
+
+.commit-detail {
+  border-top: 1px solid var(--border-default);
+  padding-top: var(--space-2);
+}
+
+.detail-header { font-size: var(--text-xs); color: var(--text-muted); margin-bottom: var(--space-1); }
+
+.detail-row {
+  display: flex;
+  gap: var(--space-2);
+  font-size: var(--text-xs);
+  padding: 2px 0;
+}
+
+.detail-row span:first-child { color: var(--text-muted); width: 60px; }
+.detail-row code { color: var(--accent-primary); font-family: var(--font-mono); }
+
+.detail-actions {
+  display: flex;
+  gap: var(--space-1);
+  margin-top: var(--space-2);
+}
+
+.detail-actions button {
+  flex: 1;
+  padding: 4px 8px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-sm);
+  color: var(--text-primary);
+  font-size: 10px;
+  cursor: pointer;
+}
+
+.detail-actions button:hover { background: var(--bg-hover); }

@@ -1,6 +1,6 @@
 <div align="center">
 
-# ✨ Rachana Code
+# Rachana Code
 
 ### A Modern, Privacy-First Code Editor
 
@@ -25,10 +25,10 @@ Rachana Code is built for developers who value **speed**, **privacy**, and **sim
 
 | Feature | Rachana Code | Others |
 |---------|:------------:|:------:|
-| Zero Telemetry | ✅ | ❌ |
-| Fast Startup | ✅ | ❌ |
-| Lightweight | ✅ | ❌ |
-| Open Source | ✅ | ⚠️ |
+| Zero Telemetry | Yes | No |
+| Fast Startup | Yes | No |
+| Lightweight | Yes | No |
+| Open Source | Yes | Partial |
 
 ---
 
@@ -98,10 +98,10 @@ npm run build && npm run electron:build
 
 Rachana Code uses VS Code-style preview tabs:
 
-- **Single-click** a file → Opens as preview (italic title, replaceable)
-- **Double-click** a file → Opens as pinned tab (permanent)
-- **Edit** a preview file → Automatically pins the tab
-- **Double-click** a tab → Pins it manually
+- **Single-click** a file - Opens as preview (italic title, replaceable)
+- **Double-click** a file - Opens as pinned tab (permanent)
+- **Edit** a preview file - Automatically pins the tab
+- **Double-click** a tab - Pins it manually
 
 ---
 
@@ -157,7 +157,7 @@ MIT License - see [LICENSE](LICENSE) for details.
 
 <div align="center">
 
-**Built with ❤️ by [NAWALA Team](https://github.com/nawala-team)**
+**Built by [NAWALA Team](https://github.com/nawala-team)**
 
 </div>
 

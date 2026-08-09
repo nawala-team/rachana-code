@@ -14,6 +14,11 @@
 [![Electron](https://img.shields.io/badge/Electron-36.x-9feaf9?style=for-the-badge&logo=electron&logoColor=white)](#)
 [![React](https://img.shields.io/badge/React-19.x-61dafb?style=for-the-badge&logo=react&logoColor=white)](#)
 
+<br/>
+
+[![Download](https://img.shields.io/badge/Download-Windows_Installer-7c3aed?style=for-the-badge&logo=windows&logoColor=white)](https://github.com/nawala-team/rachana-code/releases/download/v1.0.0/Rachana.Code.Setup.1.0.0.exe)
+[![Release](https://img.shields.io/github/v/release/nawala-team/rachana-code?style=for-the-badge&color=00d4ff)](https://github.com/nawala-team/rachana-code/releases)
+
 </div>
 
 &nbsp;

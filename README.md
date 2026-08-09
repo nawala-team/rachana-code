@@ -15,6 +15,12 @@
 
 <p><em>Fast. Lightweight. No telemetry. Your code stays yours.</em></p>
 
+<br>
+
+<img src="assets/screenshot.png" alt="Rachana Code Screenshot" width="800">
+
+<br>
+
 ---
 
 </div>

@@ -1,169 +1,130 @@
 <div align="center">
 
-# Rachana Code
+<img src="https://raw.githubusercontent.com/nawala-team/rachana-code/main/assets/banner.svg" width="100%"/>
 
-### A Modern, Privacy-First Code Editor
+<br/>
 
-<p>
-  <img src="https://img.shields.io/badge/version-1.0.0-blue?style=flat-square" alt="Version">
-  <img src="https://img.shields.io/badge/platform-Windows%20%7C%20macOS%20%7C%20Linux-lightgrey?style=flat-square" alt="Platform">
-  <img src="https://img.shields.io/badge/license-MIT-green?style=flat-square" alt="License">
-  <img src="https://img.shields.io/badge/electron-36.x-9feaf9?style=flat-square&logo=electron&logoColor=white" alt="Electron">
-  <img src="https://img.shields.io/badge/react-19.x-61dafb?style=flat-square&logo=react&logoColor=white" alt="React">
-  <img src="https://img.shields.io/badge/typescript-5.x-3178c6?style=flat-square&logo=typescript&logoColor=white" alt="TypeScript">
-</p>
+<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=22&duration=3000&pause=1000&color=7C3AED&center=true&vCenter=true&width=500&lines=Privacy+First;Lightning+Fast;Zero+Telemetry;Beautiful+UI;Open+Source" alt="Typing SVG" />
 
-<p><em>Fast. Lightweight. No telemetry. Your code stays yours.</em></p>
+<br/><br/>
 
-<br>
-
-<img src="assets/screenshot.png" alt="Rachana Code Screenshot" width="800">
-
-<br>
-
----
+[![Version](https://img.shields.io/badge/Version-1.0.0-7c3aed?style=for-the-badge)](#)
+[![Platform](https://img.shields.io/badge/Platform-Win%20%7C%20Mac%20%7C%20Linux-00d4ff?style=for-the-badge)](#)
+[![License](https://img.shields.io/badge/License-MIT-27ca40?style=for-the-badge)](#)
+[![Electron](https://img.shields.io/badge/Electron-36.x-9feaf9?style=for-the-badge&logo=electron&logoColor=white)](#)
+[![React](https://img.shields.io/badge/React-19.x-61dafb?style=for-the-badge&logo=react&logoColor=white)](#)
 
 </div>
 
-## Why Rachana Code?
+&nbsp;
 
-Rachana Code is built for developers who value **speed**, **privacy**, and **simplicity**. Unlike bloated editors that spy on your every keystroke, Rachana keeps things local and lightning-fast.
+### About
 
-| Feature | Rachana Code | Others |
-|---------|:------------:|:------:|
-| Zero Telemetry | Yes | No |
-| Fast Startup | Yes | No |
-| Lightweight | Yes | No |
-| Open Source | Yes | Partial |
+<div align="center">
 
----
+<img src="https://raw.githubusercontent.com/nawala-team/rachana-code/main/assets/about-card.svg" width="100%"/>
 
-## Features
+</div>
 
-### Core Editor
-- **Syntax Highlighting** - Support for 20+ programming languages
-- **Preview Tabs** - VS Code-style tab behavior (single-click preview, double-click pin)
-- **Multiple Tabs** - Work on multiple files simultaneously
-- **Auto-Save** - Never lose your work
-
-### Navigation
-- **File Explorer** - Browse and manage your project files
-- **Command Palette** - Quick access to all commands (`Ctrl+Shift+P`)
-- **Search** - Find text across your entire project
-- **Breadcrumbs** - Easy file path navigation
-
-### Developer Tools
-- **Integrated Terminal** - Run commands without leaving the editor
-- **Git Integration** - View branch, changes, and manage source control
-- **Debug Panel** - Built-in debugging support
-- **Extensions** - Extend functionality with plugins
-
-### Customization
-- **Themes** - Rachana Dark & Light themes
-- **Settings** - Customize font, tab size, and more
-- **Resizable Panels** - Adjust layout to your preference
+&nbsp;
 
 ---
 
-## Quick Start
+### Features
+
+<div align="center">
+
+| | | |
+|:---:|:---:|:---:|
+| <img src="https://raw.githubusercontent.com/nawala-team/rachana-code/main/assets/feature-editor.svg" width="280"/> | <img src="https://raw.githubusercontent.com/nawala-team/rachana-code/main/assets/feature-terminal.svg" width="280"/> | <img src="https://raw.githubusercontent.com/nawala-team/rachana-code/main/assets/feature-git.svg" width="280"/> |
+
+</div>
+
+&nbsp;
+
+---
+
+### Quick Start
+
+<div align="center">
 
 ```bash
-# Clone the repository
-git clone https://github.com/nawala-team/rachana-code.git
-cd rachana-code
+# Clone
+git clone https://github.com/nawala-team/rachana-code.git && cd rachana-code
 
-# Install dependencies
+# Install
 npm install
 
-# Run in development mode
+# Run
 npm run electron:dev
-
-# Build for production
-npm run build && npm run electron:build
 ```
+
+</div>
+
+&nbsp;
 
 ---
 
-## Keyboard Shortcuts
+### Keyboard Shortcuts
+
+<div align="center">
 
 | Shortcut | Action |
-|----------|--------|
+|:--------:|:------:|
 | `Ctrl+Shift+P` | Command Palette |
-| `Ctrl+Shift+E` | Explorer |
 | `Ctrl+Shift+F` | Search in Files |
-| `Ctrl+Shift+G` | Source Control |
-| `Ctrl+S` | Save File |
+| `Ctrl+S` | Save |
 | `Ctrl+N` | New File |
 | `Ctrl+B` | Toggle Sidebar |
 | `Ctrl+J` | Toggle Terminal |
-| `Ctrl+,` | Settings |
+
+</div>
+
+&nbsp;
 
 ---
 
-## Preview Tabs
+### Tech Stack
 
-Rachana Code uses VS Code-style preview tabs:
+<div align="center">
 
-- **Single-click** a file - Opens as preview (italic title, replaceable)
-- **Double-click** a file - Opens as pinned tab (permanent)
-- **Edit** a preview file - Automatically pins the tab
-- **Double-click** a tab - Pins it manually
+**Frontend**<br/>
+![React](https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=black)
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
+![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)
 
----
+**Backend**<br/>
+![Electron](https://img.shields.io/badge/Electron-47848F?style=for-the-badge&logo=electron&logoColor=white)
+![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)
 
-## Project Structure
+**Editor**<br/>
+![Monaco](https://img.shields.io/badge/Monaco_Editor-007ACC?style=for-the-badge&logo=visualstudiocode&logoColor=white)
+![xterm.js](https://img.shields.io/badge/xterm.js-000000?style=for-the-badge&logo=windowsterminal&logoColor=white)
 
-```
-rachana-code/
-├── electron/               # Electron main process
-│   ├── main.cjs           # Main entry point
-│   └── preload.cjs        # Preload scripts
-├── src/
-│   ├── components/
-│   │   ├── Layout/        # App layout & resizer
-│   │   ├── TitleBar/      # Custom title bar with menus
-│   │   ├── Sidebar/       # File explorer, search, git, settings
-│   │   ├── Editor/        # Code editor & tabs
-│   │   ├── BottomPanel/   # Terminal
-│   │   ├── StatusBar/     # Status information
-│   │   └── CommandPalette/# Quick command access
-│   ├── context/           # React contexts (Editor, Settings)
-│   └── styles/            # Design system & CSS
-└── package.json
-```
+</div>
+
+&nbsp;
 
 ---
 
-## Tech Stack
+### Contributing
 
-- **Frontend**: React 19, TypeScript, CSS Variables
-- **Backend**: Electron 36, Node.js
-- **Build**: Vite, electron-builder
-- **Terminal**: node-pty, xterm.js
+<div align="center">
 
----
+Contributions are welcome! Fork, create a branch, and submit a PR.
 
-## Contributing
+[![GitHub](https://img.shields.io/badge/View_on_GitHub-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/nawala-team/rachana-code)
 
-We welcome contributions! Please feel free to submit a Pull Request.
+</div>
 
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
----
-
-## License
-
-MIT License - see [LICENSE](LICENSE) for details.
+&nbsp;
 
 ---
 
 <div align="center">
 
-**Built by [NAWALA Team](https://github.com/nawala-team)**
+**Part of [NAWALA Ecosystem](https://github.com/nawala-team)**
 
 </div>
 
+<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=6,11,20&height=100&section=footer"/>

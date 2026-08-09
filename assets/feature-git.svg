@@ -1,0 +1,42 @@
+<svg width="280" height="180" viewBox="0 0 280 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="cardBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#161b22"/>
+      <stop offset="100%" style="stop-color:#0d1117"/>
+    </linearGradient>
+    <linearGradient id="iconGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f97316"/>
+      <stop offset="100%" style="stop-color:#fb923c"/>
+    </linearGradient>
+  </defs>
+  
+  <rect width="280" height="180" rx="12" fill="url(#cardBg)"/>
+  <rect width="280" height="180" rx="12" fill="none" stroke="#30363d" stroke-width="1"/>
+  
+  <!-- Git Icon -->
+  <g transform="translate(20, 20)">
+    <rect width="40" height="40" rx="8" fill="url(#iconGrad)" opacity="0.2"/>
+    <circle cx="20" cy="14" r="4" fill="none" stroke="#f97316" stroke-width="2"/>
+    <circle cx="14" cy="28" r="4" fill="none" stroke="#f97316" stroke-width="2"/>
+    <circle cx="26" cy="28" r="4" fill="none" stroke="#f97316" stroke-width="2"/>
+    <path d="M20 18 L20 22 L14 24" stroke="#f97316" stroke-width="2"/>
+    <path d="M20 22 L26 24" stroke="#f97316" stroke-width="2"/>
+  </g>
+  
+  <text x="20" y="85" font-family="Inter, system-ui, sans-serif" font-size="16" font-weight="600" fill="#e6edf3">Git Integration</text>
+  <text x="20" y="108" font-family="Inter, system-ui, sans-serif" font-size="12" fill="#8b949e">Built-in source control with</text>
+  <text x="20" y="124" font-family="Inter, system-ui, sans-serif" font-size="12" fill="#8b949e">branch info and change tracking</text>
+  
+  <g transform="translate(20, 145)">
+    <rect width="50" height="22" rx="4" fill="#f97316" opacity="0.15"/>
+    <text x="25" y="15" font-family="JetBrains Mono, monospace" font-size="10" fill="#f97316" text-anchor="middle">Branch</text>
+  </g>
+  <g transform="translate(80, 145)">
+    <rect width="50" height="22" rx="4" fill="#27ca40" opacity="0.15"/>
+    <text x="25" y="15" font-family="JetBrains Mono, monospace" font-size="10" fill="#27ca40" text-anchor="middle">Diff</text>
+  </g>
+  <g transform="translate(140, 145)">
+    <rect width="55" height="22" rx="4" fill="#00d4ff" opacity="0.15"/>
+    <text x="27" y="15" font-family="JetBrains Mono, monospace" font-size="10" fill="#00d4ff" text-anchor="middle">Commit</text>
+  </g>
+</svg>

@@ -1,0 +1,77 @@
+<svg width="900" height="300" viewBox="0 0 900 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0d1117"/>
+      <stop offset="50%" style="stop-color:#161b22"/>
+      <stop offset="100%" style="stop-color:#0d1117"/>
+    </linearGradient>
+    <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#7c3aed"/>
+      <stop offset="50%" style="stop-color:#00d4ff"/>
+      <stop offset="100%" style="stop-color:#7c3aed"/>
+    </linearGradient>
+    <linearGradient id="textGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#7c3aed"/>
+      <stop offset="100%" style="stop-color:#00d4ff"/>
+    </linearGradient>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="900" height="300" fill="url(#bgGrad)"/>
+  
+  <!-- Grid pattern -->
+  <g opacity="0.1">
+    <line x1="0" y1="50" x2="900" y2="50" stroke="#7c3aed" stroke-width="0.5"/>
+    <line x1="0" y1="100" x2="900" y2="100" stroke="#7c3aed" stroke-width="0.5"/>
+    <line x1="0" y1="150" x2="900" y2="150" stroke="#7c3aed" stroke-width="0.5"/>
+    <line x1="0" y1="200" x2="900" y2="200" stroke="#7c3aed" stroke-width="0.5"/>
+    <line x1="0" y1="250" x2="900" y2="250" stroke="#7c3aed" stroke-width="0.5"/>
+    <line x1="100" y1="0" x2="100" y2="300" stroke="#7c3aed" stroke-width="0.5"/>
+    <line x1="200" y1="0" x2="200" y2="300" stroke="#7c3aed" stroke-width="0.5"/>
+    <line x1="300" y1="0" x2="300" y2="300" stroke="#7c3aed" stroke-width="0.5"/>
+    <line x1="400" y1="0" x2="400" y2="300" stroke="#7c3aed" stroke-width="0.5"/>
+    <line x1="500" y1="0" x2="500" y2="300" stroke="#7c3aed" stroke-width="0.5"/>
+    <line x1="600" y1="0" x2="600" y2="300" stroke="#7c3aed" stroke-width="0.5"/>
+    <line x1="700" y1="0" x2="700" y2="300" stroke="#7c3aed" stroke-width="0.5"/>
+    <line x1="800" y1="0" x2="800" y2="300" stroke="#7c3aed" stroke-width="0.5"/>
+  </g>
+  
+  <!-- Floating code brackets -->
+  <text x="80" y="80" font-family="JetBrains Mono, monospace" font-size="40" fill="#7c3aed" opacity="0.3">{</text>
+  <text x="780" y="240" font-family="JetBrains Mono, monospace" font-size="40" fill="#00d4ff" opacity="0.3">}</text>
+  <text x="150" y="250" font-family="JetBrains Mono, monospace" font-size="24" fill="#7c3aed" opacity="0.2">&lt;/&gt;</text>
+  <text x="700" y="70" font-family="JetBrains Mono, monospace" font-size="24" fill="#00d4ff" opacity="0.2">[ ]</text>
+  
+  <!-- Logo icon -->
+  <g transform="translate(350, 70)">
+    <rect x="0" y="0" width="80" height="60" rx="8" fill="none" stroke="url(#accentGrad)" stroke-width="2" filter="url(#glow)"/>
+    <rect x="0" y="0" width="80" height="14" rx="8" ry="0" fill="url(#accentGrad)" opacity="0.3"/>
+    <circle cx="10" cy="7" r="3" fill="#ff5f56"/>
+    <circle cx="22" cy="7" r="3" fill="#ffbd2e"/>
+    <circle cx="34" cy="7" r="3" fill="#27ca40"/>
+    <text x="12" y="35" font-family="JetBrains Mono, monospace" font-size="10" fill="#7c3aed">const</text>
+    <text x="42" y="35" font-family="JetBrains Mono, monospace" font-size="10" fill="#00d4ff">code</text>
+    <text x="12" y="50" font-family="JetBrains Mono, monospace" font-size="10" fill="#e5e5e5">=</text>
+    <text x="22" y="50" font-family="JetBrains Mono, monospace" font-size="10" fill="#27ca40">"✨"</text>
+  </g>
+  
+  <!-- Main title -->
+  <text x="450" y="180" font-family="Inter, system-ui, sans-serif" font-size="56" font-weight="700" fill="url(#textGrad)" text-anchor="middle" filter="url(#glow)">Rachana Code</text>
+  
+  <!-- Tagline -->
+  <text x="450" y="220" font-family="Inter, system-ui, sans-serif" font-size="18" fill="#8b949e" text-anchor="middle">Modern Code Editor for the Privacy-Conscious Developer</text>
+  
+  <!-- Bottom accent line -->
+  <rect x="300" y="260" width="300" height="3" rx="1.5" fill="url(#accentGrad)" opacity="0.8"/>
+  
+  <!-- Decorative dots -->
+  <circle cx="250" cy="261" r="4" fill="#7c3aed" opacity="0.6"/>
+  <circle cx="650" cy="261" r="4" fill="#00d4ff" opacity="0.6"/>
+</svg>

@@ -325,13 +325,47 @@ ipcMain.handle('terminal-resize', async (event, id, cols, rows) => {
 ipcMain.handle('run-command', async (event, command, cwd) => {
   return new Promise((resolve) => {
     const targetCwd = cwd || currentWorkingDir || process.cwd();
-    exec(command, { cwd: targetCwd, timeout: 30000, maxBuffer: 1024 * 1024 }, (error, stdout, stderr) => {
-      if (error) {
-        resolve({ success: false, error: error.message, stderr, stdout });
-      } else {
+    const isWin = process.platform === 'win32';
+    
+    // On Windows, use cmd.exe for better compatibility
+    const shell = isWin ? 'cmd.exe' : '/bin/bash';
+    const shellArgs = isWin ? ['/c', command] : ['-c', command];
+    
+    const { spawn } = require('child_process');
+    const child = spawn(shell, shellArgs, {
+      cwd: targetCwd,
+      env: process.env,
+      windowsHide: true,
+    });
+    
+    let stdout = '';
+    let stderr = '';
+    
+    child.stdout.on('data', (data) => {
+      stdout += data.toString();
+    });
+    
+    child.stderr.on('data', (data) => {
+      stderr += data.toString();
+    });
+    
+    child.on('error', (error) => {
+      resolve({ success: false, error: error.message, stderr, stdout });
+    });
+    
+    child.on('close', (code) => {
+      if (code === 0) {
         resolve({ success: true, stdout, stderr });
+      } else {
+        resolve({ success: false, error: `Process exited with code ${code}`, stderr, stdout });
       }
     });
+    
+    // Timeout after 30 seconds
+    setTimeout(() => {
+      child.kill();
+      resolve({ success: false, error: 'Command timed out', stdout, stderr });
+    }, 30000);
   });
 });
 

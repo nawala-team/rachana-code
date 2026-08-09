@@ -24,7 +24,22 @@
 
 .terminal-cwd { 
   color: var(--text-muted); 
-  font-size: var(--text-xs); 
+  font-size: var(--text-xs);
+  max-width: 300px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.terminal-running {
+  color: var(--nawala-cyan-400);
+  font-size: var(--text-xs);
+  animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
 }
 
 .terminal-output {

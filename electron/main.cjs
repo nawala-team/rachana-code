@@ -385,12 +385,6 @@ ipcMain.handle('run-command', async (event, command, cwd) => {
         resolve({ success: false, error: `Exit code ${code}`, stderr, stdout });
       }
     });
-    
-    // Timeout after 30 seconds
-    setTimeout(() => {
-      child.kill();
-      resolve({ success: false, error: 'Command timed out', stdout, stderr });
-    }, 30000);
   });
 });
 

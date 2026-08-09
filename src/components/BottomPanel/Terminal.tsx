@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, useCallback } from 'react';
 import './Terminal.css';
 
 interface HistoryEntry {
@@ -14,32 +14,35 @@ export default function Terminal() {
   const [commandHistory, setCommandHistory] = useState<string[]>([]);
   const [historyIndex, setHistoryIndex] = useState(-1);
   const [cwd, setCwd] = useState('');
+  const [isRunning, setIsRunning] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
   const outputRef = useRef<HTMLDivElement>(null);
 
-  // Initialize cwd from working directory
-  useEffect(() => {
-    const initCwd = async () => {
-      if (window.electronAPI) {
-        const dir = await window.electronAPI.getWorkingDir();
-        if (dir) {
-          setCwd(dir);
-        } else {
-          setCwd('C:\\');
-        }
-      } else {
+  // Sync cwd with working directory
+  const syncWorkingDir = useCallback(async () => {
+    if (window.electronAPI) {
+      const dir = await window.electronAPI.getWorkingDir();
+      if (dir && dir !== cwd) {
+        setCwd(dir);
+      } else if (!dir && !cwd) {
         setCwd('C:\\');
       }
-    };
-    initCwd();
-  }, []);
+    }
+  }, [cwd]);
+
+  // Initialize and listen for working directory changes
+  useEffect(() => {
+    syncWorkingDir();
+    const interval = setInterval(syncWorkingDir, 1000);
+    return () => clearInterval(interval);
+  }, [syncWorkingDir]);
 
   useEffect(() => {
     outputRef.current?.scrollTo(0, outputRef.current.scrollHeight);
   }, [history]);
 
   const executeCommand = async (cmd: string) => {
-    if (!cmd.trim()) return;
+    if (!cmd.trim() || isRunning) return;
     
     setCommandHistory(prev => [...prev, cmd]);
     setHistoryIndex(-1);
@@ -79,6 +82,8 @@ export default function Terminal() {
       return;
     }
 
+    setIsRunning(true);
+    
     try {
       if (window.electronAPI) {
         const result = await window.electronAPI.runCommand(cmd, cwd);
@@ -99,7 +104,6 @@ export default function Terminal() {
           }]);
         }
       } else {
-        // Mock for browser (non-Electron)
         setHistory(prev => [...prev, { 
           command: cmd, 
           output: `[Browser Mode] Command: ${cmd}\nNote: Real terminal requires Electron runtime`, 
@@ -114,12 +118,14 @@ export default function Terminal() {
         isError: true, 
         timestamp: new Date() 
       }]);
+    } finally {
+      setIsRunning(false);
     }
     setInput('');
   };
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
-    if (e.key === 'Enter') {
+    if (e.key === 'Enter' && !isRunning) {
       executeCommand(input);
     } else if (e.key === 'ArrowUp') {
       e.preventDefault();
@@ -138,16 +144,47 @@ export default function Terminal() {
         setHistoryIndex(-1);
         setInput('');
       }
+    } else if (e.key === 'c' && e.ctrlKey && !e.shiftKey) {
+      // Ctrl+C - copy selected text
+      const selection = window.getSelection()?.toString();
+      if (selection) {
+        navigator.clipboard.writeText(selection);
+      }
+    } else if (e.key === 'l' && e.ctrlKey) {
+      // Ctrl+L - clear screen
+      e.preventDefault();
+      setHistory([]);
+    }
+  };
+
+  // Handle right-click context menu for copy/paste
+  const handleContextMenu = async (e: React.MouseEvent) => {
+    e.preventDefault();
+    const selection = window.getSelection()?.toString();
+    if (selection) {
+      await navigator.clipboard.writeText(selection);
+    } else {
+      try {
+        const text = await navigator.clipboard.readText();
+        setInput(prev => prev + text);
+      } catch {
+        // Clipboard access denied
+      }
     }
   };
 
   const displayCwd = cwd || 'Loading...';
 
   return (
-    <div className="terminal" onClick={() => inputRef.current?.focus()}>
+    <div 
+      className="terminal" 
+      onClick={() => inputRef.current?.focus()}
+      onContextMenu={handleContextMenu}
+    >
       <div className="terminal-header">
         <span className="terminal-title">Terminal</span>
-        <span className="terminal-cwd">{displayCwd}</span>
+        <span className="terminal-cwd" title={displayCwd}>{displayCwd}</span>
+        {isRunning && <span className="terminal-running">Running...</span>}
       </div>
       <div className="terminal-output" ref={outputRef}>
         {history.map((entry, i) => (
@@ -172,6 +209,8 @@ export default function Terminal() {
             className="terminal-input"
             spellCheck={false}
             autoFocus
+            disabled={isRunning}
+            placeholder={isRunning ? 'Running...' : ''}
           />
         </div>
       </div>

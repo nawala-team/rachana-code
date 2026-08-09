@@ -78,7 +78,7 @@ export default function AboutModal({ onClose }: AboutModalProps) {
               <span>2026 Nawala Team</span>
             </div>
             <a 
-              href="https://github.com/nawala" 
+              href="https://github.com/nawala-team" 
               target="_blank" 
               rel="noopener noreferrer"
               className="about-github-link"
